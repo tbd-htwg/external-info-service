@@ -17,8 +17,10 @@ public class CacheConfig {
     @Bean
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager("warnings", "weather", "tours");
+        cacheManager.setAsyncCacheMode(true);
+        
         cacheManager.setCaffeine(Caffeine.newBuilder()
-                .expireAfterWrite(1, TimeUnit.HOURS) // Daten nach 1 Std. ablaufen lassen
+                .expireAfterWrite(60, TimeUnit.MINUTES) // Daten nach 60 Min löschen
                 .maximumSize(500)); // Maximal 500 Einträge im Speicher
         return cacheManager;
     }

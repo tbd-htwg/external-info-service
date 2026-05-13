@@ -1,0 +1,20 @@
+server:
+  port: 8081  # Damit es nicht mit deinem Hauptprojekt (meist 8080) kollidiert
+
+spring:
+  cache:
+    type: caffeine
+    cache-names: warnings, weather, tours
+    caffeine:
+      spec: expireAfterWrite=1h,maximumSize=500
+
+external-api:
+  nominatim:
+    url: https://nominatim.openstreetmap.org
+  aa:
+    url: https://api.auswaertiges-amt.de/v1
+  open-meteo:
+    url: https://api.open-meteo.com/v1
+  viator:
+    api-key: ${VIATOR_API_KEY}
+    base-url: "https://api.viator.com/partner/products/search"
