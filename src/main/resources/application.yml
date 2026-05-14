@@ -8,6 +8,15 @@ spring:
     caffeine:
       spec: expireAfterWrite=1h,maximumSize=500
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
 external-api:
   nominatim:
     url: https://nominatim.openstreetmap.org

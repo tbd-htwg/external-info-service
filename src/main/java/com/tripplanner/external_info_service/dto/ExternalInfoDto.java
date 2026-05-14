@@ -5,6 +5,7 @@ import java.util.List;
 public final class ExternalInfoDto {
 
     public record GeocodingResult(
+        String city,
         String displayName, 
         double lat, 
         double lon, 
